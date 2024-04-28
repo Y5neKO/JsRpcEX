@@ -49,7 +49,7 @@ def init():
         pass
     else:
         print("格式有误,默认选择n")
-	pyperclip.copy(url)
+    pyperclip.copy(url)
     print("连接通信地址复制成功,请直接粘贴在控制台执行")
 
 
