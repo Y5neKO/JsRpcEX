@@ -17,6 +17,8 @@ def multi_line_input():
         elif line in help_dict:
             lines.append(line)
             break
+        elif line == 'DROP':
+            return "I'll drop it."
         lines.append(line)
     return '\n'.join(lines)
 

@@ -13,7 +13,7 @@ from core.misc import *
 
 help_info = """
 执行模式说明:
-Js数据支持多行输入,输入EOF结束
+Js数据支持多行输入,输入EOF结束,输入DROP放弃输入
 help: 帮助
 restart: 重新监听(JsRpc部分功能需切换监听地址)
 """
@@ -76,6 +76,9 @@ def execjs():
         if js_code == 'help':
             print(help_info)
             continue
+        if js_code == "I'll drop it.":
+            print("放弃输入")
+            continue
         data = {
             "group": group,
             "code": js_code
@@ -83,9 +86,10 @@ def execjs():
         try:
             response = requests.post(wsURL, data=data)
         except requests.exceptions.ConnectionError:
-            print("请求失败")
+            print(color("EROR", "red") + "]请求失败")
             return False
         res_json = json.loads(response.text)
+        print("返回结果: ")
         print(json.dumps(res_json, ensure_ascii=False, indent=4))
 
 
