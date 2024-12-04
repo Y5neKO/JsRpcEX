@@ -2,6 +2,7 @@ import argparse
 import json
 import re
 import signal
+from os import system
 
 import requests
 import pyperclip
@@ -60,7 +61,8 @@ def execjs():
     """
     wsURL = input("请输入JsRpc服务监听地址: ")
     group = input("请输入组名: ")
-    if not wsURL.startswith("http"):
+    pattern = r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}$'
+    if not bool(re.match(pattern, wsURL)):
         print("格式有误,请重新输入")
         execjs()
     else:
@@ -84,7 +86,7 @@ def execjs():
             "code": js_code
         }
         try:
-            response = requests.post(wsURL, data=data)
+            response = requests.post("http://" + wsURL + "/execjs", data=data)
         except requests.exceptions.ConnectionError:
             print(color("EROR", "red") + "]请求失败")
             return False

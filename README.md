@@ -13,7 +13,7 @@ JsRpcEX>python main.py -h
  | |__| | \__ \ | | \ \  | |_) | | (__  | |____   / . \
   \____/  |___/ |_|  \_\ | .__/   \___| |______| /_/ \_\
                          | |
-                         |_|                   v0.1 by Y5neKO :)
+                         |_|                   v1.088 by Y5neKO :)
 
 usage: main.py [-h] [--init] [--execjs]
 
@@ -24,3 +24,16 @@ optional arguments:
   --init      获取需要注入的Js数据
   --execjs    进入执行模式
 ```
+因为注入js的内容不同，需要保证和JsRpc的版本一致。
+
+### 获取需要注入的Js数据
+![img.png](img/img.png)
+
+### 连接websocket
+先启动JsRpc本体，再在控制台连接websocket
+![img_1.png](img/img_1.png)
+
+### 进入执行模式
+![img_2.png](img/img_2.png)
+
+其余用法请参考JsRpc项目本体
